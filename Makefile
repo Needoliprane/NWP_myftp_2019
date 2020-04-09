@@ -1,5 +1,5 @@
 ##
-## EPITECH PROJECT, 2017
+## EPITECH PROJECT, 2018
 ## Makefile
 ## File description:
 ## Makefile
@@ -7,31 +7,41 @@
 
 NAME	=	myftp
 
-SRC		=	src/main.c				\
-			src/master.c			\
-			src/socker_manage.c		\
+SRC	=	src/main.c	\
+		src/get_next_line.c	\
+		src/extract_parameter.c			\
+		src/call_commands.c	\
+		src/server_client.c	\
+		src/trash.c	\
+		src/command/cdup.c		\
+		src/command/cwd.c		\
+		src/command/delete.c		\
+		src/command/pwd.c		\
+		src/command/noop.c		\
+		src/command/help.c		\
+		src/command/user.c		\
+		src/command/pass.c		\
 
-
-OBJ		=	$(SRC:.c=.o)
-
+OBJ	=	$(SRC:.c=.o)
 
 CPPFLAGS=	-I./include
 
-CC		=	gcc -Wall -Wextra -g3
+CC	=	gcc -Wall -Wextra -g3
 
-RM		=	rm -f
+RM	=	rm -f
 
-all:	nm
+all:	$(NAME)
 
-nm:		$(OBJ)
-		$(CC) -g3 $(OBJ) -o $(NAME)
+$(NAME):	$(OBJ)
+	$(CC) -g3 $(OBJ) -o $(NAME)
 
 clean:
-		$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
-fclean:	clean
-		$(RM) $(NAME)
+fclean: clean
+	$(RM) $(NAME)
 
-re:	fclean all
+re: fclean all
 
 .PHONY: all clean fclean re
+

@@ -5,23 +5,41 @@
 ** main
 */
 
-#include "myftp.h"
+#include "server.h"
 
-int print_help(void)
+static int usage(char *name)
 {
-    printf("USAGE:\t./myftp port path\n\tport\t");
-    printf("is the port number on which the server socket listens\n\t");
-    printf("path\tis the path to the home directory for the Anonymous user\n");
+    printf("USAGE: %s port path\n", name);
+    printf("       port is the port number on which \
+            the server socket listens\n");
+    printf("       path is the path to the home \
+            directory for the Anonymous user\n");
     return (0);
+}
+
+static int master(char **av)
+{
+    struct stat stats;
+
+    for (int i=0; i< av[1][i]; i++) {
+        if (!isdigit(av[1][i])) {
+            fprintf(stderr, "Wrong argument, -help for usage\n");
+            return (84);
+        }
+    }
+    stat(av[2], &stats);
+    if (S_ISDIR(stats.st_mode))
+        return (init_ftp(av));
+    return (84);
 }
 
 int main(int ac, char **av)
 {
-    if (ac >= 2 && strcmp(av[1], "-help") == 0) {
-        return (print_help());
-    }
+    if (ac == 2 && strcmp("-help", av[1]) == 0)
+        return (usage(av[0]));
     if (ac == 3) {
-        return (master(atoi(av[1]), av[2]));
+        return (master(av));
     }
+    fprintf(stderr, "Wrong argument, -help for usage\n");
     return (84);
 }
