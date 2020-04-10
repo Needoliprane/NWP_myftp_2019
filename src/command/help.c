@@ -5,7 +5,7 @@
 ** help
 */
 
-#include "server.h"
+#include "myftp.h"
 
 void help(int csock, char *tmp, user_data_t *var)
 {

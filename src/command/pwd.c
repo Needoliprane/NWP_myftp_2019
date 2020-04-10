@@ -5,15 +5,16 @@
 ** pwd
 */
 
-#include "server.h"
+#include "myftp.h"
 
 void pwd(int csock, char *tmp, user_data_t *user)
 {
     char *args;
 
-    if ((args = extract_parameter(tmp, "PWD")) != NULL && args[0] == '\r') {
+    args = extract_parameter(tmp, strlen("PWD"));
+    if (args != NULL && args[0] == '\r') {
         dprintf(csock, "257 \"%s\" created.\r\n", user->path);
-    } else {
-        dprintf(csock, "553 Requested action not taken.\r\n");
+        return;
     }
+    dprintf(csock, "553 Requested action not taken.\r\n");
 }

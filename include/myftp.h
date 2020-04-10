@@ -28,12 +28,13 @@ typedef struct user_data_s {
     char *path;
 } user_data_t;
 
+typedef struct sockaddr_in sockaddr_in_t;
+
 /*Init*/
 int init_ftp(char **av);
-void init_struct(struct sockaddr_in *sock_addr_in, char *av);
+void init_struct(sockaddr_in_t *sock_addr_in, char *av);
 
 /* launch */
-int server_socket(void);
 int interprete_client_command(char *path, int *client_socket, fd_set readfs);
 
 /* lib*/
@@ -41,19 +42,20 @@ void *free_work(void *str);
 char *get_next_line(int fd);
 
 /*loop tool*/
-char *extract_parameter(char *tmp, char *cmd);
+char *extract_parameter(char *tmp, int cmd_len);
 
 /* Pirnt Errpr*/
 int print_error(char *str);
 
 /* Command accepted*/
-void user(int csock, char *tmp, user_data_t *var);
-void pass(int csock, char *tmp, user_data_t *var);
-void help(int csock, char *tmp, user_data_t *var);
-void noop(int csock, char *tmp, user_data_t *var);
-void pwd(int csock, char *tmp, user_data_t *var);
-void cdup(int csock, char *tmp, user_data_t *var);
-void cwd(int csock, char *tmp, user_data_t *var);
-void dele(int csock, char *tmp, user_data_t *var);
+void cdup(int csock, char *tmp, user_data_t *user);
+void cwd(int csock, char *tmp, user_data_t *user);
+void user(int csock, char *tmp, user_data_t *user);
+void pass(int csock, char *tmp, user_data_t *user);
+void help(int csock, char *tmp, user_data_t *user);
+void noop(int csock, char *tmp, user_data_t *user);
+void pwd(int csock, char *tmp, user_data_t *user);
+void dele(int csock, char *tmp, user_data_t *user);
+void not_implem(int csocks, char *tmp, user_data_t *user);
 
 #endif /*SERVER_H*/

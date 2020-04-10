@@ -5,7 +5,7 @@
 ** user
 */
 
-#include "server.h"
+#include "myftp.h"
 
 static int basic_check(user_data_t *user, int csock);
 
@@ -15,8 +15,8 @@ void user(int csock, char *tmp, user_data_t *var)
 
     if (basic_check(var, csock) == 84)
         return;
-    if ((user_name = extract_parameter(tmp, "USER")) != NULL &&
-            strcmp(user_name, "\r") == 0) {
+    user_name = extract_parameter(tmp, strlen("USER"));
+    if (user_name != NULL && strcmp(user_name, "\r") == 0) {
         dprintf(csock, "530 Permission denied.\r\n");
         return;
     } else if (user_name == NULL) {

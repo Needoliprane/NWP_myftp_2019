@@ -5,16 +5,17 @@
 ** delete
 */
 
-#include "server.h"
+#include "myftp.h"
 
 void dele(int csock, char *tmp, user_data_t *user)
 {
     char *path;
 
     user = user;
-    if ((path = extract_parameter(tmp, "DELE")) != NULL && remove(path) != -1) {
+    path = extract_parameter(tmp, strlen("DELE"));
+    if (path != NULL && remove(path) != -1) {
         dprintf(csock, "250 Requested file action okay, completed.\r\n");
-    } else {
-        dprintf(csock, "550 Requested file action not taken.\r\n");
+        return;
     }
+    dprintf(csock, "550 Requested file action not taken.\r\n");
 }

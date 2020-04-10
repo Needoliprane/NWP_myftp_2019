@@ -5,7 +5,7 @@
 ** checker.c
 */
 
-#include "server.h"
+#include "myftp.h"
 
 int print_error(char *str)
 {

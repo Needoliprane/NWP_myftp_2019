@@ -5,7 +5,7 @@
 ** noop
 */
 
-#include "server.h"
+#include "myftp.h"
 
 void noop(int csock, char *tmp, user_data_t *var)
 {

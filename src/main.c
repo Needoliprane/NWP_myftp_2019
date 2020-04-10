@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "server.h"
+#include "myftp.h"
 
 static int usage(char *name)
 {
@@ -19,7 +19,7 @@ static int usage(char *name)
 
 static int master(char **av)
 {
-    struct stat stats;
+    struct stat stats = {0};
 
     for (int i=0; i< av[1][i]; i++) {
         if (!isdigit(av[1][i])) {
