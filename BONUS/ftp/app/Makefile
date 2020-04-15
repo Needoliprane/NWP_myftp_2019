@@ -13,6 +13,9 @@ SRC	=	src/main.c	\
 		src/call_commands.c	\
 		src/server_client.c	\
 		src/trash.c	\
+		src/accept_connection.c		\
+		src/command/list.c			\
+		src/command/stor.c		\
 		src/command/cdup.c		\
 		src/command/cwd.c		\
 		src/command/delete.c		\
