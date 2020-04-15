@@ -14,7 +14,7 @@ char const *tab[] = {
 
 void (* const command[])(int, char *, user_data_t *) = {
         user, pass, cwd, cdup, dele,pwd,
-        help, noop, not_implem, not_implem, not_implem, NULL
+        help, noop, list, stor, not_implem, not_implem, NULL
 };
 
 void not_implem(int socks, char *tmp, user_data_t *user)

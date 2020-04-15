@@ -43,6 +43,7 @@ char *get_next_line(int fd);
 
 /*loop tool*/
 char *extract_parameter(char *tmp, int cmd_len);
+int accept_new_client(int sock, int *client_socket);
 
 /* Pirnt Errpr*/
 int print_error(char *str);
@@ -56,6 +57,8 @@ void help(int csock, char *tmp, user_data_t *user);
 void noop(int csock, char *tmp, user_data_t *user);
 void pwd(int csock, char *tmp, user_data_t *user);
 void dele(int csock, char *tmp, user_data_t *user);
+void stor(int csock, char *tmp, user_data_t *user);
+void list(int csock, char *tmp, user_data_t *user);
 void not_implem(int csocks, char *tmp, user_data_t *user);
 
 #endif /*SERVER_H*/

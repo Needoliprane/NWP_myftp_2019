@@ -21,7 +21,7 @@ static int master(char **av)
 {
     struct stat stats = {0};
 
-    for (int i=0; i< av[1][i]; i++) {
+    for (int i = 0; i< av[1][i]; i++) {
         if (!isdigit(av[1][i])) {
             fprintf(stderr, "Wrong argument, -help for usage\n");
             return (84);
