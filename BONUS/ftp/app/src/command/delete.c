@@ -64,7 +64,7 @@ static int rmtree(char *path, DIR *dir)
     struct stat stat_entry;
     struct dirent *entry;
 
-    for (;(entry = readdir(dir)) != NULL; free_work(full_path)) {
+    for (;dir != NULL && (entry=readdir(dir)) != NULL; free_work(full_path)) {
         if (!strcmp(entry->d_name, ".") || !strcmp(entry->d_name, ".."))
             continue;
         full_path = buil_full_path(path, entry->d_name);

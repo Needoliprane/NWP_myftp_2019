@@ -16,6 +16,7 @@ void cdup(int csock, char *tmp, user_data_t *user)
         user->path = free_work(user->path);
         if ((user->path = getcwd(user->path, 0)) == NULL) {
             perror("An error occured : getcwd :");
+            dprintf(csock, "550 Requested file action not taken.\r\n");
             return;
         }
         dprintf(csock, "250 Requested file action okay, completed.\r\n");
