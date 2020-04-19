@@ -10,10 +10,10 @@
 static int usage(char *name)
 {
     printf("USAGE: %s port path\n", name);
-    printf("       port is the port number on which \
-            the server socket listens\n");
-    printf("       path is the path to the home \
-            directory for the Anonymous user\n");
+    printf("\t\tport\tis the port number on which");
+    printf(" the server socket listens\n");
+    printf("\t\tpath\tis the path to the home");
+    printf(" directory for the Anonymous user\n");
     return (0);
 }
 
