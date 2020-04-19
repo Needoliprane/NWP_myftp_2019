@@ -18,7 +18,7 @@ inline char *extract_parameter(char *tmp, int command_len)
         return (NULL);
     if (data_from_client[0] == '\r' && data_from_client[1] == '\0')
         return (data_from_client);
-    if (data_from_client[0] == ' ' && 
+    if (data_from_client[0] == ' ' &&
             data_from_client[strlen(data_from_client) - 1] == '\r') {
         if ((input_after_clean = strdup(data_from_client + 1)) != NULL) {
             free_work(data_from_client);

@@ -23,7 +23,6 @@ static int master(char **av)
 
     for (int i = 0; i< av[1][i]; i++) {
         if (!isdigit(av[1][i])) {
-            fprintf(stderr, "Wrong argument, -help for usage\n");
             return (84);
         }
     }
@@ -40,6 +39,6 @@ int main(int ac, char **av)
     if (ac == 3) {
         return (master(av));
     }
-    fprintf(stderr, "Wrong argument, -help for usage\n");
+    fprintf(stderr, "Wrong argument, -h for usage\n");
     return (84);
 }

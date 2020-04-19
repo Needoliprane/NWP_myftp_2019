@@ -9,13 +9,11 @@
 
 char const *tab[] = {
         "USER", "PASS", "CWD", "CDUP", "DELE", "PWD",
-        "HELP", "NOOP", "LIST", "STOR", "RETR", NULL
-};
+        "HELP", "NOOP", "LIST", "STOR", "RETR", NULL};
 
 void (* const command[])(int, char *, user_data_t *) = {
         user, pass, cwd, cdup, dele,pwd,
-        help, noop, list, stor, not_implem, not_implem, NULL
-};
+        help, noop, list, stor, not_implem, not_implem, NULL};
 
 void not_implem(int socks, char *tmp, user_data_t *user)
 {
@@ -24,7 +22,7 @@ void not_implem(int socks, char *tmp, user_data_t *user)
     dprintf(socks, "502	Command not implemented.\r\n");
 }
 
-static void read_client(int csock, char *temporary, user_data_t *user)
+static void read_client_command(int csock, char *temporary, user_data_t *user)
 {
     if (temporary == NULL || strlen(temporary) < 2) {
         if (temporary == NULL)
@@ -68,7 +66,7 @@ static int call_commands(int csock, char *path)
             dprintf(csock, "221 Service closing control connection.\r\n");
             break;
         }
-        read_client(csock, temporary, &user);
+        read_client_command(csock, temporary, &user);
     }
     if (temporary)
         free(temporary);
