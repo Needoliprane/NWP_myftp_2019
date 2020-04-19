@@ -1,1 +1,0 @@
-cd /home/louis/ && sudo ./docker.sh ; cd - && sudo docker-compose up --build
