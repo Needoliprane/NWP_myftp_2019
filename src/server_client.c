@@ -64,9 +64,8 @@ int init_ftp(char **av)
     init_struct(&sock_addr_in, av[1]);
     if (bind(sock, (struct sockaddr *)&sock_addr_in, sizeof(sock_addr_in))
                                                                     == -1)
-        return (print_error("An error occured : bind : \n"));
+        return (print_error("An error occured : bind\n"));
     if (listen(sock, 30) == -1)
-        return (print_error("An error occured : liesten : \n"));
-    server_loop(sock, av[2]);
-    return (0);
+        return (print_error("An error occured : liesten\n"));
+    return (server_loop(sock, av[2]));
 }

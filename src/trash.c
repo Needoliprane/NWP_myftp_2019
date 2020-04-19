@@ -22,6 +22,8 @@ void init_struct(struct sockaddr_in *sock_addr_in, char *av)
 
 void *free_work(void *str)
 {
-    free(str);
+    if (str) {
+        free(str);
+    }
     return (NULL);
 }
