@@ -15,6 +15,7 @@ SRC	=	src/main.c	\
 		src/trash.c	\
 		src/accept_connection.c		\
 		src/command/list.c			\
+		src/command/not_implem.c	\
 		src/command/stor.c		\
 		src/command/cdup.c		\
 		src/command/cwd.c		\

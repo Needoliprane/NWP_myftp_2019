@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2018
-** checker.c
+** EPITECH PROJECT, 2020
+** NWP_myftp_2019
 ** File description:
-** checker.c
+** trash
 */
 
 #include "myftp.h"

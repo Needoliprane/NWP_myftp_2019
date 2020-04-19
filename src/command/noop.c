@@ -9,7 +9,7 @@
 
 void noop(int csock, char *tmp, user_data_t *var)
 {
-    (void)tmp;
+    tmp = tmp;
     var = var;
     dprintf(csock, "200 Command okay.\r\n");
 }

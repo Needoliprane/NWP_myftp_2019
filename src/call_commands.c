@@ -15,13 +15,6 @@ void (* const command[])(int, char *, user_data_t *) = {
         user, pass, cwd, cdup, dele,pwd,
         help, noop, list, stor, not_implem, not_implem, NULL};
 
-void not_implem(int socks, char *tmp, user_data_t *user)
-{
-    tmp = tmp;
-    user = user;
-    dprintf(socks, "502	Command not implemented.\r\n");
-}
-
 static void read_client_command(int csock, char *temporary, user_data_t *user)
 {
     if (temporary == NULL || strlen(temporary) < 2) {
@@ -32,7 +25,8 @@ static void read_client_command(int csock, char *temporary, user_data_t *user)
         return;
     }
     for (int i = 0; tab[i]; i++) {
-        if (i > 2  && user->password == NULL) {
+        if (i > 2  && user->password == NULL && tab[i] &&
+                strncmp(temporary, tab[i], strlen(tab[i]) - 1) == 0) {
             dprintf(csock, "530 Please login with USER and PASS.\r\n");
             return;
         }

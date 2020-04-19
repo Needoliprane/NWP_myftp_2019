@@ -35,7 +35,7 @@ static int server_loop(int sock, char *path)
     fd_set readfs = {0};
     int client_socket[30] = {0};
 
-    for (int max_sock = 0, sd = 0; 1; ) {
+    for (int max_sock = 0, sd = 0; 1;) {
         if ((max_sock = init_select_tools(&readfs, sock)) == -1)
             exit(84);
         if (init_max_socket(&sd, client_socket, &max_sock, &readfs)

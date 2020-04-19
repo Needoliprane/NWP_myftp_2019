@@ -9,7 +9,7 @@
 
 void help(int csock, char *tmp, user_data_t *var)
 {
-    (void)tmp;
+    tmp = tmp;
     var = var;
     dprintf(csock, "214 Help message.\r\n");
 }
